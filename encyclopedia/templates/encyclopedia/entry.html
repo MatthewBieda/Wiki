@@ -1,0 +1,11 @@
+{% extends "encyclopedia/layout.html" %}
+
+<! --- implementing dynamic titles --->
+{% block title %}
+    {{ entrytitle }}
+{% endblock %}
+
+{% block body %}
+    {{ entry|safe }}
+    <a href="{{ entrytitle }}/edit">Edit this page</a>
+{% endblock %}

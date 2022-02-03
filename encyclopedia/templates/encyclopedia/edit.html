@@ -1,0 +1,21 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Editing {{ entrytitle }} 
+{% endblock %}
+
+<! --- implementing simple form validation with "required" --->
+
+{% block body %}
+    <form action={% url 'saveedit' %} method="POST">
+        {% csrf_token %}
+        <label for="title">Title:</label><br>
+        <input type="text" name="title" id="title" value={{ entrytitle }} readonly><br>
+        <label for="body">Body (markdown):</label><br>
+        <textarea name="body" id="body" required>
+{{ entry }} 
+        </textarea><br>
+        <input type="submit" value="Commit edits!">
+    </form>
+{% endblock %}
+

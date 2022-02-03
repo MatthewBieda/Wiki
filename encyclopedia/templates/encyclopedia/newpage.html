@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    New Page 
+{% endblock %}
+
+<! --- implementing simple form validation with "required" --->
+
+{% block body %}
+    <form action={% url 'savepage' %} method="POST">
+        {% csrf_token %}
+        <label for="title">Title:</label><br>
+        <input type="text" name="title" id="title" required><br>
+        <label for="body">Body (markdown):</label><br>
+        <textarea name="body" id="body" required></textarea><br>
+        <input type="submit" value="Create Page!">
+    </form>
+{% endblock %}
+
